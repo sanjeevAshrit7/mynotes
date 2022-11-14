@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Footer from './components/footer';
+import Home from './components/home';
+import NavBar from './components/navBar';
+import PeopleToFollow from './components/peopleToFollow';
+import Preperation from './components/preperation';
+import Preperations from './components/preperations';
+import ToDos from './components/toDos';
+import UniqueSolutions from './components/uniqueSolutions';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <NavBar/>
+      <Routes>
+        <Route element={<Home/>} path={'/'}/>
+        <Route element={<Preperations/>} path={'/Preperations'}/>
+        <Route element={<Preperation/>} path={'/Preperation/:slug'}/>
+        <Route element={<UniqueSolutions/>} path={'/UniqueSolutions'}/>
+        <Route element={<PeopleToFollow/>} path={'/PeopleToFollow'}/>
+        <Route element={<ToDos/>} path={'/ToDos'}/>
+      </Routes>
+      <div className='max-w-full'>
+        <Footer/>
+      </div>
+    </BrowserRouter>
+  )
 }
 
 export default App;
